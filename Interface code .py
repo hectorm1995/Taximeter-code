@@ -15,7 +15,7 @@ fecha=date.today()
 hoy=fecha.strftime("%d/%m/%Y")
 
 host, port = "192.168.4.1", 80 
-BUFSIZ = 1024 #cantidad de bytes
+BUFSIZ = 1024 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 client.connect((host, port)) 
 
@@ -30,7 +30,7 @@ data8=(sys.argv[8:])
 data9=(sys.argv[9:])
 data10=(sys.argv[10:])
 
-def lectura1(): #la tarea receive
+def lectura1(): 
 		valor='2'+':'
 		try:
 			message = valor.encode() 
@@ -88,7 +88,7 @@ def lectura2():
 		finally:
 			pass
 
-def lectura3(): #la tarea receive
+def lectura3(): 
 		valor='4'+':'
 		try:
 			message = valor.encode() 
@@ -115,7 +115,7 @@ def lectura3(): #la tarea receive
 		finally:
 			pass
 
-def lectura4(): #la tarea receive
+def lectura4(): 
 		valor='5'+':'
 		try:
 			message = valor.encode() 
@@ -152,7 +152,7 @@ def lectura4(): #la tarea receive
 		finally:
 			pass
 
-def lectura5(): #la tarea receive
+def lectura5(): 
 		valor='6'+':'
 		try:
 			message = valor.encode() 
@@ -190,21 +190,17 @@ def enviar1():
 	valor='7'+':'+comp.get()+':'+ciu.get()+':'+ruc.get()+':'+aut.get()+':'+prop.get()
 	try:		 
 		dato=valor.encode() 
-		# client.sendall(dato) #envia el valor hacia el servidor (arduino)
 		client.send((dato))
-		#print('sending {!r}'.format(dato))
 		print('sending {!r}'.format(dato))
 						
 	finally:
 		pass
 
-def enviar2(): #cuando se presiona la tecla enviar hace lo siguiente
+def enviar2(): 
 	valor='8'+':'+ser.get()+':'+k.get()+':'+vcr.get()+':'+vmax.get()+':'+pla.get()+':'+nreg.get()
 	try:		 
 		dato=valor.encode()
-		# client.sendall(dato) 
 		client.send((dato))
-		#print('sending {!r}'.format(dato))
 		print('sending {!r}'.format(dato))
 						
 	finally:
@@ -214,9 +210,7 @@ def enviar3():
 	valor='9'+':'+master.get()+':'+user1.get()+':'+con1.get()+':'+user2.get()+':'+con2.get()
 	try:		 
 		dato=valor.encode() 
-		# client.sendall(dato) 
 		client.send((dato))
-		#print('sending {!r}'.format(dato))
 		print('sending {!r}'.format(dato))
 						
 	finally:
@@ -226,9 +220,7 @@ def enviar4():
 	valor='10'+':'+tm1.get()+':'+ta1.get()+':'+Vk1.get()+':'+me1.get()+':'+ex1.get()+':'+tm2.get()+':'+ta2.get()+':'+Vk2.get()+':'+me2.get()+':'+ex2.get()
 	try:		 
 		dato=valor.encode()
-		# client.sendall(dato) 
 		client.send((dato))
-		#print('sending {!r}'.format(dato))
 		print('sending {!r}'.format(dato))
 						
 	finally:
@@ -299,12 +291,12 @@ def borrar4():
 def Salir():
 	valor= '12'+':'
 	try:		 
-		dato=valor.encode()#transforma el string "valor" en bytes y lo guarda en dato 
+		dato=valor.encode()
 		client.send((dato))
 		print('sending {!r}'.format(dato))
 	finally:
-		ventana.quit() #cierra la interfaz
-		client.close() #cierra la conexion del socket
+		ventana.quit() 
+		client.close() 
 def login():
 	db = sqlite3.connect('/home/hector/Documentos/usuarios/login.db')
 	c = db.cursor()	
@@ -336,7 +328,7 @@ def ventana1():
 	caja2.pack()
 	botonlogin = Button (text = "Login", command = login)
 	botonlogin.place(x=100, y=100)
-	ventana.mainloop() #ejecuta la ventana
+	ventana.mainloop() 
 
 def abrirventana():
 		
